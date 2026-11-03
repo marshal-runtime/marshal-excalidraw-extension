@@ -1,0 +1,33 @@
+{
+  "name": "@marshal/excalidraw",
+  "version": "0.1.0",
+  "description": "Marshal Runtime extension wrapping the official Excalidraw MCP (mcp.excalidraw.com): agents draw hand-drawn diagrams that render in an in-chat Excalidraw card.",
+  "private": true,
+  "type": "commonjs",
+  "main": "dist/runtime.cjs",
+  "files": [
+    "dist",
+    "runtime-extension.json",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "node build.mjs && tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.browser.json",
+    "test": "node build.mjs && vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "devDependencies": {
+    "@excalidraw/excalidraw": "^0.18.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "esbuild": "^0.25.12",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

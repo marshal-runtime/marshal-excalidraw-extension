@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "identity": "@marshal/excalidraw",
+  "version": "0.1.0",
+  "agentGuidance": {
+    "purpose": "The official Excalidraw MCP (mcp.excalidraw.com) as Marshal capabilities: draw hand-drawn diagrams that render as an Excalidraw card in the chat, then share them on excalidraw.com or save .excalidraw files.",
+    "when": "The user wants a diagram, sketch, whiteboard, flowchart, architecture or sequence picture drawn in the chat, or wants an existing Excalidraw diagram changed, shared or saved.",
+    "recipe": "1) excalidraw.guide once per conversation (element format, palette, camera rules). 2) excalidraw.draw {elements, title}: shows the card and returns checkpointId (pass slot to place it inside your reply at a <!--ui:<slot>--> line). 3) To change it: excalidraw.checkpoint.read {checkpointId} for the user's edits, then excalidraw.draw with [{\"type\":\"restoreCheckpoint\",\"id\":checkpointId}, ...new elements] and {\"type\":\"delete\",\"ids\":\"a,b\"}; pass instanceId to redraw the same card. 4) excalidraw.export {checkpointId} for a shareable excalidraw.com link; excalidraw.save {checkpointId, path} for a .excalidraw file. Raw MCP tools: excalidraw.mcp.list_tools / excalidraw.mcp.call.",
+    "boundaries": "Diagram elements are sent to Excalidraw's hosted MCP server and stored there as checkpoints. excalidraw.export publishes an unlisted link anyone with the URL can open: only when the user asks to share or open in Excalidraw. Never put secrets in diagrams."
+  },
+  "entrypoint": "dist/runtime.cjs",
+  "moduleFormat": "commonjs-bundle-v1",
+  "contributes": {
+    "capabilities": [
+      "excalidraw.guide",
+      "excalidraw.draw",
+      "excalidraw.checkpoint.read",
+      "excalidraw.export",
+      "excalidraw.save",
+      "excalidraw.mcp.list_tools",
+      "excalidraw.mcp.call",
+      "excalidraw.view.sync"
+    ]
+  },
+  "docs": {
+    "readme": "README.md"
+  }
+}

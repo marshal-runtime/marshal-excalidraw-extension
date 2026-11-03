@@ -1,0 +1,5 @@
+node_modules/
+.view/
+.stage/
+dist/
+src/generated/
